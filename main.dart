@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
             leading: const Icon(Icons.menu),
-            title: const Text(' form Validation'),
+            title: const Text('form Validation'),
             actions: const [
               Icon(Icons.search),
             ]),
@@ -39,6 +39,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
+            keyboardType: TextInputType.name,
             decoration: const InputDecoration(
                 icon: Icon(Icons.person),
                 hintText: 'Enter Full Name',
@@ -51,6 +52,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             },
           ),
           TextFormField(
+            keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 icon: Icon(Icons.call),
                 hintText: 'Enter Contact',
@@ -63,6 +65,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             },
           ),
           TextFormField(
+            keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'please enter email';
@@ -76,17 +79,28 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
           const TextField(
+            keyboardType: TextInputType.name,
             decoration: InputDecoration(
               icon: Icon(Icons.details),
               hintText: 'Enter Address',
-              labelText: 'Address',
+            ),
+          ),
+          TextFormField(
+            keyboardType: TextInputType.datetime,
+            decoration: const InputDecoration(
+              icon: Icon(Icons.calendar_month),
+              hintText: 'Date of Birth',
+              labelText: 'DOB',
             ),
           ),
           ElevatedButton(
               onPressed: () {
                 if (_formkey.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Data Submitted')));
+                    const SnackBar(
+                      content: Text('Data Submitted'),
+                    ),
+                  );
                 }
               },
               child: const Text('Submit'))
