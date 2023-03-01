@@ -75,6 +75,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
               labelText: 'E-mail',
             ),
           ),
+          const TextField(
+            decoration: InputDecoration(
+              icon: Icon(Icons.details),
+              hintText: 'Enter Address',
+              labelText: 'Address',
+            ),
+          ),
           ElevatedButton(
               onPressed: () {
                 if (_formkey.currentState!.validate()) {
